@@ -2,9 +2,10 @@ C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\bin\Debug\MyNotePad.exe.co
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\bin\Debug\MyNotePad.exe
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\bin\Debug\MyNotePad.pdb
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.csproj.AssemblyReference.cache
-C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.Form1.resources
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.Properties.Resources.resources
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.csproj.GenerateResource.cache
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.csproj.CoreCompileInputs.cache
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.exe
 C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.pdb
+C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.MyNotePad.resources
+C:\Users\phantasmist\source\repos\MyNotePad\MyNotePad\obj\Debug\MyNotePad.Form2.resources
