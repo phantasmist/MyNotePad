@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,60 +20,8 @@ namespace MyNotePad
             InitializeComponent();
         }
 
-        [DllImport("kernel32.dll")] //WIN32 SDK
-        static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder buf, int bSize,  string path);
-        [DllImport("kernel32.dll")] //이거 한개당 함수 한개씩 Import 가능 >> 왜 이런식이지?
-        static extern bool WritePrivateProfileString(string section, string key, string val, string path);
+        //myClass mc = new myClass(); static class library는 인스턴스 선언 불필요
 
-        // string GetToken(int n, string str, char d);
-        //      int n: n번째 아이템
-        //      string str: 문자열 
-        //      char d: 구분자
-        //  설명) 문자열 str에 있는 데이터 중 구분자 d를 통해 
-        //        필드를 구분하여 그 중 n번째 데이터을 반환
-        //  예시) GetToken(1, "a,b,c,d" ',')  returns 'b'
-        public string GetToken(int n, string str, char d)
-        {
-            
-            if (str.Contains(d))
-            {
-                //split version
-                //string[] items = str.Split(d);
-
-                ////강사님 버전
-                //// str의 적합한 인덱스 start~end를 체크해서
-                //// str의 substring을 반환
-                // for(int i=j=k=start=end=0;i<str.Length;i++)
-                // {
-                //      if (str[i] == d) k++;
-                //      if (k == n) start = i;
-                //      if (k == n + 1) end = i;
-                // }
-                // if (start == 0) return "";
-                // if (end == 0) end = str.Length;
-                // return str.Substring(start,end-(start+1));
-                
-                //My Non-split version:
-                  var items = new List<string>();
-                string item = "";
-                for(int i = 0; i < str.Length; i++)
-                {
-                    if (str[i] != d)
-                        item+=str[i];
-                    if (str[i] == d || i == str.Length-1)
-                    {
-                        items.Add(item);
-                        item = "";
-                    }
-                       
-                }
-                string[] ITEMS = items.ToArray();
-                if (n <= ITEMS.Length && n >= 0) // n > 0으로 되어 있었음..
-                    return ITEMS[n];
-                else return "index out of bounds";
-                }
-            else return $"does not contain \'{d}\'";            
-        }
 
         //전역변수의 초기화
         string strOrigin = "";
@@ -184,7 +133,7 @@ namespace MyNotePad
                 sw.Write(tbMemo.Text);
                 sw.Close();
                 //char c = '\\';
-                MyNotePad.ActiveForm.Text = GetToken((filePath.Split('\\').Length -1), filePath , '\\');
+                MyNotePad.ActiveForm.Text = mylib.GetToken((filePath.Split('\\').Length -1), filePath , '\\');
                 isFileOpen = true;
             }
             
@@ -270,39 +219,39 @@ namespace MyNotePad
         {
             for (int i = 0; i < 5; i++)
             {
-                tbMemo.Text += GetToken(i, "0, 1, 2, 3, 4", ',');
+                tbMemo.Text += mylib.GetToken(i, "0, 1, 2, 3, 4", ',');
             }
             
         }
-
+        
         //경로 path
-        string iniPath = ".\\MyNotePad.ini"; // .ini파일의 fullpath
+        //string iniPath = ".\\MyNotePad.ini"; // .ini파일의 fullpath
+        iniClass ini = new iniClass(".\\MyNotePad.ini"); //왜 iniPath 못받지??
         //ini load
         private void MyNotePad_Load(object sender, EventArgs e)
         {
-            // .ini 파일의 key-value 쌍의 value의 최대 사이즈
-            StringBuilder buf = new StringBuilder(500);
-
-            //GetPrivateProfileString(string sec, string key, string def, StringBuilder buf, int bSize, string path);
-            GetPrivateProfileString("Form1", "LocationX", "0", buf, 500, iniPath); 
-                int x = int.Parse(buf.ToString()) ; // LocationX에서 읽어서 int x에 저장
-            GetPrivateProfileString("Form1", "LocationY", "0", buf, 500, iniPath);
-                int y = int.Parse(buf.ToString());
+            int x = int.Parse(ini.GetPString("Form1", "LocationX", "0"));
+            int y = int.Parse(ini.GetPString("Form1", "LocationY", "0"));
             Location = new Point(x, y); // Location이 Form.Location 의 약어다
-
-            
-
-
+                 
         }
 
         //ini save
         private void MyNotePad_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //WritePrivateProfileString(string section, string key, string val, string path);
-            WritePrivateProfileString("Form1", "LocationX", $"{Location.X}", iniPath);
-            WritePrivateProfileString("Form1", "LocationY", $"{Location.Y}", iniPath);
-
             
+            ini.WritePString("Form1", "LocationX", $"{Location.X}");
+            ini.WritePString("Form1", "LocationY", $"{Location.Y}");
+
+        }
+
+        private void callTest2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formInput frmDlg = new formInput("str input test"); //using myLibrary에서 참조
+            frmDlg.ShowDialog();
+            string tReturn = frmDlg.textReturn;
+            if (tReturn != "")
+                tbMemo.Text += tReturn; 
         }
     }
 }

@@ -41,6 +41,7 @@ namespace MyNotePad
             this.MnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnCallTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.getTokenTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MNToLower = new System.Windows.Forms.ToolStripMenuItem();
             this.MNToUpper = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,7 @@ namespace MyNotePad
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sbLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.sbLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.getTokenTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.callTest2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +86,7 @@ namespace MyNotePad
             this.MnPrintPreview,
             this.MnExit});
             this.fIleToolStripMenuItem.Name = "fIleToolStripMenuItem";
-            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fIleToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fIleToolStripMenuItem.Text = "FIle";
             // 
             // MNNew
@@ -143,7 +144,8 @@ namespace MyNotePad
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnCallTest,
-            this.getTokenTestToolStripMenuItem});
+            this.getTokenTestToolStripMenuItem,
+            this.callTest2ToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
@@ -155,6 +157,13 @@ namespace MyNotePad
             this.MnCallTest.Text = "CallTest";
             this.MnCallTest.Click += new System.EventHandler(this.MnCallTest_Click);
             // 
+            // getTokenTestToolStripMenuItem
+            // 
+            this.getTokenTestToolStripMenuItem.Name = "getTokenTestToolStripMenuItem";
+            this.getTokenTestToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.getTokenTestToolStripMenuItem.Text = "GetTokenTest";
+            this.getTokenTestToolStripMenuItem.Click += new System.EventHandler(this.getTokenTestToolStripMenuItem_Click);
+            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -163,34 +172,34 @@ namespace MyNotePad
             this.MNToHex,
             this.MNReturn});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(56, 26);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // MNToLower
             // 
             this.MNToLower.Name = "MNToLower";
-            this.MNToLower.Size = new System.Drawing.Size(179, 26);
+            this.MNToLower.Size = new System.Drawing.Size(224, 26);
             this.MNToLower.Text = "Lowercase";
             this.MNToLower.Click += new System.EventHandler(this.MNToLower_Click);
             // 
             // MNToUpper
             // 
             this.MNToUpper.Name = "MNToUpper";
-            this.MNToUpper.Size = new System.Drawing.Size(179, 26);
+            this.MNToUpper.Size = new System.Drawing.Size(224, 26);
             this.MNToUpper.Text = "Uppercase";
             this.MNToUpper.Click += new System.EventHandler(this.MNToUpper_Click);
             // 
             // MNToHex
             // 
             this.MNToHex.Name = "MNToHex";
-            this.MNToHex.Size = new System.Drawing.Size(179, 26);
+            this.MNToHex.Size = new System.Drawing.Size(224, 26);
             this.MNToHex.Text = "Hexadecimal";
             this.MNToHex.Click += new System.EventHandler(this.MNToHex_Click);
             // 
             // MNReturn
             // 
             this.MNReturn.Name = "MNReturn";
-            this.MNReturn.Size = new System.Drawing.Size(179, 26);
+            this.MNReturn.Size = new System.Drawing.Size(224, 26);
             this.MNReturn.Text = "Return";
             this.MNReturn.Click += new System.EventHandler(this.MNReturn_Click);
             // 
@@ -199,7 +208,7 @@ namespace MyNotePad
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -250,12 +259,12 @@ namespace MyNotePad
             this.sbLabel2.Size = new System.Drawing.Size(68, 20);
             this.sbLabel2.Text = "sbLabel2";
             // 
-            // getTokenTestToolStripMenuItem
+            // callTest2ToolStripMenuItem
             // 
-            this.getTokenTestToolStripMenuItem.Name = "getTokenTestToolStripMenuItem";
-            this.getTokenTestToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.getTokenTestToolStripMenuItem.Text = "GetTokenTest";
-            this.getTokenTestToolStripMenuItem.Click += new System.EventHandler(this.getTokenTestToolStripMenuItem_Click);
+            this.callTest2ToolStripMenuItem.Name = "callTest2ToolStripMenuItem";
+            this.callTest2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.callTest2ToolStripMenuItem.Text = "CallTest2";
+            this.callTest2ToolStripMenuItem.Click += new System.EventHandler(this.callTest2ToolStripMenuItem_Click);
             // 
             // MyNotePad
             // 
@@ -307,6 +316,7 @@ namespace MyNotePad
         private System.Windows.Forms.ToolStripStatusLabel sbLabel1;
         private System.Windows.Forms.ToolStripStatusLabel sbLabel2;
         private System.Windows.Forms.ToolStripMenuItem getTokenTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem callTest2ToolStripMenuItem;
     }
 }
 
